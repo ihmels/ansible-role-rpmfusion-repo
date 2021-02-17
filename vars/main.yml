@@ -1,0 +1,27 @@
+---
+rpmfusion_repo_fingerprints:
+  fedora:
+    "2020":
+      free: "E9A4 91A3 DE24 7814 E7E0 67EA E06F 8ECD D651 FF2E"
+      nonfree: "79BD B88F 9BBF 7391 0FD4 095B 6A2A F961 9484 3C65"
+  el:
+    "8":
+      free: "8379 35CD 19E1 23AA 7F8A 8E69 979F 0C69 158B 3811"
+      nonfree: "CF9F D59F 61D6 6121 46CD AC8E 14B6 792D BDDA 8475"
+    "7":
+      free: "DB9A 9A57 CAFD 23DA 3A88  792F 758B 3D18 F5CF 6C1E"
+      nonfree: "C3FA F3A9 6B39 8583 91ED  D8D9 C8F7 6DF1 A310 8F6C"
+
+rpmfusion_repo_distributions:
+  Fedora: fedora
+  CentOS: el
+  RedHat: el
+
+rpmfusion_repo_gpg_key_versions:
+  fedora:
+    "33": "2020"
+    "34": "2020"
+    "35": "2020"
+
+rpmfusion_repo_distribution: "{{ rpmfusion_repo_distributions[ansible_facts.distribution] }}"
+rpmfusion_repo_gpg_key_version: "{{ rpmfusion_repo_gpg_key_versions[rpmfusion_repo_distribution][ansible_facts.distribution_major_version] if rpmfusion_repo_distribution == 'fedora' else ansible_facts.distribution_major_version }}"

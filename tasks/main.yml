@@ -1,0 +1,22 @@
+---
+- name: Install RPM Fusion free RPM key
+  rpm_key:
+    key: "{{ rpmfusion_repo_free_gpg_url }}"
+    state: present
+    fingerprint: "{{ rpmfusion_repo_free_fingerprint }}"
+
+- name: Install RPM Fusion nonfree RPM key
+  rpm_key:
+    key: "{{ rpmfusion_repo_nonfree_gpg_url }}"
+    state: present
+    fingerprint: "{{ rpmfusion_repo_nonfree_fingerprint }}"
+
+- name: Install RPM Fusion free repository
+  package:
+    name: "{{ rpmfusion_repo_free_repo_url }}"
+    state: present
+
+- name: Install RPM Fusion nonfree repository
+  package:
+    name: "{{ rpmfusion_repo_nonfree_repo_url }}"
+    state: present
