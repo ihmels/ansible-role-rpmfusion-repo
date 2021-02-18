@@ -20,3 +20,29 @@
   package:
     name: "{{ rpmfusion_repo_nonfree_repo_url }}"
     state: present
+
+- name: Enable or disable RPM Fusion free repository
+  ini_file:
+    path: "/etc/yum.repos.d/{{ item }}.repo"
+    section: "{{ item }}"
+    option: "enabled"
+    value: "{{ rpmfusion_repo_enable_free | int }}"
+    create: no
+    no_extra_spaces: yes
+  failed_when: no
+  loop:
+    - "rpmfusion-free"
+    - "rpmfusion-free-updates"
+
+- name: Enable or disable RPM Fusion nonfree repository
+  ini_file:
+    path: "/etc/yum.repos.d/{{ item }}.repo"
+    section: "{{ item }}"
+    option: "enabled"
+    value: "{{ rpmfusion_repo_enable_free | int }}"
+    create: no
+    no_extra_spaces: yes
+  failed_when: no
+  loop:
+    - "rpmfusion-nonfree"
+    - "rpmfusion-nonfree-updates"

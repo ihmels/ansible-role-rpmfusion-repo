@@ -28,6 +28,11 @@ GPG key location for RPM Fusion free and nonfree repositories.
 
 GPG key fingerprints for corresponding keys.
 
+    rpmfusion_repo_enable_free: true
+    rpmfusion_repo_enable_nonfree: true
+
+Enable or disable repositories.
+
 Dependencies
 ------------
 

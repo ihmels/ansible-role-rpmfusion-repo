@@ -7,3 +7,6 @@ rpmfusion_repo_nonfree_gpg_url: "https://rpmfusion.org/keys?action=AttachFile&do
 
 rpmfusion_repo_free_fingerprint: "{{ rpmfusion_repo_fingerprints[rpmfusion_repo_distribution][rpmfusion_repo_gpg_key_version]['free'] }}"
 rpmfusion_repo_nonfree_fingerprint: "{{ rpmfusion_repo_fingerprints[rpmfusion_repo_distribution][rpmfusion_repo_gpg_key_version]['nonfree'] }}"
+
+rpmfusion_repo_enable_free: true
+rpmfusion_repo_enable_nonfree: true
