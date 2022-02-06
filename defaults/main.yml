@@ -1,6 +1,6 @@
 ---
-rpmfusion_repo_free_repo_url: "https://download1.rpmfusion.org/free/{{ rpmfusion_repo_distribution }}/rpmfusion-free-release-{{ ansible_facts.distribution_major_version }}.noarch.rpm"
-rpmfusion_repo_nonfree_repo_url: "https://download1.rpmfusion.org/nonfree/{{ rpmfusion_repo_distribution }}/rpmfusion-nonfree-release-{{ ansible_facts.distribution_major_version }}.noarch.rpm"
+rpmfusion_repo_free_repo_url: "https://download1.rpmfusion.org/free/{{ rpmfusion_repo_distribution }}/rpmfusion-free-release-{{ rpmfusion_repo_distribution_major_version }}.noarch.rpm"
+rpmfusion_repo_nonfree_repo_url: "https://download1.rpmfusion.org/nonfree/{{ rpmfusion_repo_distribution }}/rpmfusion-nonfree-release-{{ rpmfusion_repo_distribution_major_version }}.noarch.rpm"
 
 rpmfusion_repo_free_gpg_url: "https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-free-{{ rpmfusion_repo_distribution }}-{{ rpmfusion_repo_gpg_key_version }}"
 rpmfusion_repo_nonfree_gpg_url: "https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-nonfree-{{ rpmfusion_repo_distribution }}-{{ rpmfusion_repo_gpg_key_version }}"
