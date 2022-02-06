@@ -44,6 +44,7 @@ jobs:
           - 'docker.io/geerlingguy/docker-fedora35-ansible:latest'
           - 'docker.io/geerlingguy/docker-fedora34-ansible:latest'
           - 'docker.io/geerlingguy/docker-fedora33-ansible:latest'
+          - 'docker.io/geerlingguy/docker-rockylinux8-ansible:latest'
           - 'docker.io/geerlingguy/docker-centos8-ansible:latest'
           - 'docker.io/geerlingguy/docker-centos7-ansible:latest'
 

@@ -13,15 +13,23 @@ rpmfusion_repo_fingerprints:
       nonfree: "C3FA F3A9 6B39 8583 91ED  D8D9 C8F7 6DF1 A310 8F6C"
 
 rpmfusion_repo_distributions:
+  _default: el
   Fedora: fedora
-  CentOS: el
-  RedHat: el
+
+rpmfusion_repo_distribution: "{{ rpmfusion_repo_distributions[ansible_facts.distribution]|default(rpmfusion_repo_distributions['_default']) }}"
+
+rpmfusion_repo_distribution_major_version: "{{ ansible_facts.distribution_major_version }}"
 
 rpmfusion_repo_gpg_key_versions:
+  _default: "{{ rpmfusion_repo_distribution_major_version }}"
   fedora:
-    "33": "2020"
-    "34": "2020"
-    "35": "2020"
+    _default: "2020"
 
-rpmfusion_repo_distribution: "{{ rpmfusion_repo_distributions[ansible_facts.distribution] }}"
-rpmfusion_repo_gpg_key_version: "{{ rpmfusion_repo_gpg_key_versions[rpmfusion_repo_distribution][ansible_facts.distribution_major_version] if rpmfusion_repo_distribution == 'fedora' else ansible_facts.distribution_major_version }}"
+rpmfusion_repo_gpg_key_version: "{{ rpmfusion_repo_gpg_key_versions[rpmfusion_repo_distribution][ansible_facts.distribution_major_version]|default(rpmfusion_repo_gpg_key_versions[rpmfusion_repo_distribution]['_default'])|default(rpmfusion_repo_distribution_major_version) }}"
+
+rpmfusion_repo_powertools_repo_files:
+  CentOS: "CentOS-Linux-PowerTools.repo"
+  AlmaLinux: "almalinux-powertools.repo"
+  Rocky: "Rocky-PowerTools.repo"
+
+rpmfusion_repo_powertools_repo_file: "{{ rpmfusion_repo_powertools_repo_files[ansible_facts.distribution] }}"

@@ -6,15 +6,15 @@ Installs [RPM Fusion][1] free and nonfree repositories.
 Requirements
 ------------
 
-None.
+On RHEL or other compatible distributions like CentOS the EPEL repository is required, which can be installed with the `geerlingguy.repo-epel` role.
 
 Role Variables
 --------------
 
 Available variables are listed below, along with default values (see `defaults/main.yml`).
 
-    rpmfusion_repo_free_repo_url: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_facts.distribution_major_version }}.noarch.rpm"
-    rpmfusion_repo_nonfree_repo_url: "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_facts.distribution_major_version }}.noarch.rpm"
+    rpmfusion_repo_free_repo_url: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ rpmfusion_repo_distribution_major_version }}.noarch.rpm"
+    rpmfusion_repo_nonfree_repo_url: "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ rpmfusion_repo_distribution_major_version }}.noarch.rpm"
 
 The URLs from which the RPM Fusion free and nonfree repositories will be downloaded and installed.
 
