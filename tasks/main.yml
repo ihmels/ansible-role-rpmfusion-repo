@@ -46,3 +46,13 @@
   loop:
     - "rpmfusion-nonfree"
     - "rpmfusion-nonfree-updates"
+
+- name: Enable PowerTools repository
+  ini_file:
+    path: "/etc/yum.repos.d/CentOS-Linux-PowerTools.repo"
+    section: "powertools"
+    option: "enabled"
+    value: "1"
+    create: no
+    no_extra_spaces: yes
+  when: (ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "8")
