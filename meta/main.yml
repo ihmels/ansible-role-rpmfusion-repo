@@ -1,5 +1,6 @@
 galaxy_info:
   role_name: rpmfusion_repo
+  namespace: ihmels
   author: Yannick Ihmels <yannick@ihmels.org>
   description: Install RPM Fusion repositories
   license: MIT
