@@ -5,7 +5,7 @@ driver:
   name: docker
 platforms:
   - name: instance
-    image: "${MOLECULE_IMAGE:-docker.io/geerlingguy/docker-fedora35-ansible:latest}"
+    image: "${MOLECULE_IMAGE:-docker.io/geerlingguy/docker-fedora37-ansible:latest}"
     pre_build_image: true
 provisioner:
   name: ansible

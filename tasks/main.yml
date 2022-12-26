@@ -1,58 +1,58 @@
 ---
 - name: Install RPM Fusion free RPM key
-  rpm_key:
+  ansible.builtin.rpm_key:
     key: "{{ rpmfusion_repo_free_gpg_url }}"
     state: present
     fingerprint: "{{ rpmfusion_repo_free_fingerprint }}"
 
 - name: Install RPM Fusion nonfree RPM key
-  rpm_key:
+  ansible.builtin.rpm_key:
     key: "{{ rpmfusion_repo_nonfree_gpg_url }}"
     state: present
     fingerprint: "{{ rpmfusion_repo_nonfree_fingerprint }}"
 
 - name: Install RPM Fusion free repository
-  package:
+  ansible.builtin.package:
     name: "{{ rpmfusion_repo_free_repo_url }}"
     state: present
 
 - name: Install RPM Fusion nonfree repository
-  package:
+  ansible.builtin.package:
     name: "{{ rpmfusion_repo_nonfree_repo_url }}"
     state: present
 
 - name: Enable or disable RPM Fusion free repository
-  ini_file:
+  community.general.ini_file:
     path: "/etc/yum.repos.d/{{ item }}.repo"
     section: "{{ item }}"
-    option: "enabled"
+    option: enabled
     value: "{{ rpmfusion_repo_enable_free | int }}"
-    create: no
-    no_extra_spaces: yes
-  failed_when: no
+    create: false
+    no_extra_spaces: true
+  failed_when: false
   loop:
     - "rpmfusion-free"
     - "rpmfusion-free-updates"
 
 - name: Enable or disable RPM Fusion nonfree repository
-  ini_file:
+  community.general.ini_file:
     path: "/etc/yum.repos.d/{{ item }}.repo"
     section: "{{ item }}"
-    option: "enabled"
+    option: enabled
     value: "{{ rpmfusion_repo_enable_free | int }}"
-    create: no
-    no_extra_spaces: yes
-  failed_when: no
+    create: false
+    no_extra_spaces: true
+  failed_when: false
   loop:
     - "rpmfusion-nonfree"
     - "rpmfusion-nonfree-updates"
 
 - name: Enable PowerTools repository
-  ini_file:
+  community.general.ini_file:
     path: "/etc/yum.repos.d/{{ rpmfusion_repo_powertools_repo_file }}"
-    section: "powertools"
-    option: "enabled"
+    section: powertools
+    option: enabled
     value: "1"
-    create: no
-    no_extra_spaces: yes
+    create: false
+    no_extra_spaces: true
   when: ansible_facts.distribution in rpmfusion_repo_powertools_repo_files and ansible_facts.distribution_major_version == "8"

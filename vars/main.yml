@@ -5,6 +5,9 @@ rpmfusion_repo_fingerprints:
       free: "E9A4 91A3 DE24 7814 E7E0 67EA E06F 8ECD D651 FF2E"
       nonfree: "79BD B88F 9BBF 7391 0FD4 095B 6A2A F961 9484 3C65"
   el:
+    "9":
+      free: "EDC0 0FE7 418C 9DF7 EF49  91A4 7403 EA33 2964 58F3"
+      nonfree: "BB24 128A 4BB3 C335 2C0B  75A2 E417 4E6B AAB2 12EA"
     "8":
       free: "8379 35CD 19E1 23AA 7F8A 8E69 979F 0C69 158B 3811"
       nonfree: "CF9F D59F 61D6 6121 46CD AC8E 14B6 792D BDDA 8475"
@@ -16,7 +19,7 @@ rpmfusion_repo_distributions:
   _default: el
   Fedora: fedora
 
-rpmfusion_repo_distribution: "{{ rpmfusion_repo_distributions[ansible_facts.distribution]|default(rpmfusion_repo_distributions['_default']) }}"
+rpmfusion_repo_distribution: "{{ rpmfusion_repo_distributions[ansible_facts.distribution] | default(rpmfusion_repo_distributions['_default']) }}"
 
 rpmfusion_repo_distribution_major_version: "{{ ansible_facts.distribution_major_version }}"
 
@@ -25,7 +28,7 @@ rpmfusion_repo_gpg_key_versions:
   fedora:
     _default: "2020"
 
-rpmfusion_repo_gpg_key_version: "{{ rpmfusion_repo_gpg_key_versions[rpmfusion_repo_distribution][ansible_facts.distribution_major_version]|default(rpmfusion_repo_gpg_key_versions[rpmfusion_repo_distribution]['_default'])|default(rpmfusion_repo_distribution_major_version) }}"
+rpmfusion_repo_gpg_key_version: "{{ rpmfusion_repo_gpg_key_versions[rpmfusion_repo_distribution][ansible_facts.distribution_major_version] | default(rpmfusion_repo_gpg_key_versions[rpmfusion_repo_distribution]['_default']) | default(rpmfusion_repo_distribution_major_version) }}"
 
 rpmfusion_repo_powertools_repo_files:
   CentOS: "CentOS-Linux-PowerTools.repo"
