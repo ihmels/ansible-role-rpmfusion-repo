@@ -39,7 +39,7 @@
     path: "/etc/yum.repos.d/{{ item }}.repo"
     section: "{{ item }}"
     option: enabled
-    value: "{{ rpmfusion_repo_enable_free | int }}"
+    value: "{{ rpmfusion_repo_enable_nonfree | int }}"
     create: false
     no_extra_spaces: true
   failed_when: false
