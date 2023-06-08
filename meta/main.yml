@@ -1,15 +1,17 @@
+---
 galaxy_info:
   role_name: rpmfusion_repo
   namespace: ihmels
-  author: Yannick Ihmels <yannick@ihmels.org>
-  description: Install RPM Fusion repositories
+  author: Yannick Ihmels
+  description: Install and configure RPM Fusion repositories
+  issue_tracker_url: https://github.com/ihmels/ansible-role-rpm-fusion/issues
   license: MIT
   min_ansible_version: '2.10'
   platforms:
     - name: Fedora
       versions:
-        - '36'
         - '37'
+        - '38'
     - name: EL
       versions:
         - '7'
